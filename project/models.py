@@ -29,7 +29,7 @@ class Project(models.Model):
     image = CloudinaryField('image', blank=True, null=True)
     slug = models.SlugField(unique=True)
     category = models.ForeignKey(Service, on_delete=models.DO_NOTHING, related_name='projects')
-    program = models.ManyToManyField(Program, related_name='projects', null=True, blank=True)
+    program = models.ManyToManyField(Program, related_name='projects', blank=True)
     description = models.TextField(max_length=150)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
