@@ -1,15 +1,12 @@
 #!/usr/bin/env bash
-# Exit immediately if a command exits with a non-zero status
+# Exit on error
 set -o errexit
 
-# Collect static files for Admin panel/DRF browsable API
+# Collect static files
 python manage.py collectstatic --noinput
 
-# Run database migrations
+# Run database migrations (This automatically triggers the code above!)
 python manage.py migrate
 
-# Create your admin superuser automatically
-python manage.py setup_admin
-
-# Boot up Gunicorn and Celery together via Honcho
+# Start both web and worker using Honcho
 honcho start
