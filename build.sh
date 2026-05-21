@@ -1,4 +1,12 @@
-#1/usr/bin/env/ bash
-pip install -r requirements.txt
+#!/usr/bin/env bash
+# Exit immediately if a command exits with a non-zero status
+set -o errexit
+
+# Collect static files for Admin panel/DRF browsable API
 python manage.py collectstatic --noinput
+
+# Run database migrations
 python manage.py migrate
+
+# Boot up Gunicorn and Celery together via Honcho
+honcho start
