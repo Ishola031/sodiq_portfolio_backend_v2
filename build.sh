@@ -8,5 +8,8 @@ python manage.py collectstatic --noinput
 # Run database migrations
 python manage.py migrate
 
+# Create your admin superuser automatically
+python manage.py setup_admin
+
 # Boot up Gunicorn and Celery together via Honcho
 honcho start
