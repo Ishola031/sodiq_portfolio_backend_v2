@@ -38,7 +38,7 @@ if ENVIRONMENT == 'development':
 else:
     DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['https://sodiq-portfolio-backend-v2.onrender.com']
 
 
 # Application definition
@@ -69,6 +69,7 @@ MIDDLEWARE = [
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
+    "https://sodiq-portfolio-v2.vercel.app"
 ]
 
 ROOT_URLCONF = 'sodiq_portfolio.urls'
