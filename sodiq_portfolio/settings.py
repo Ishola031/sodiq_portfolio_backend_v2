@@ -38,7 +38,12 @@ if ENVIRONMENT == 'development':
 else:
     DEBUG = False
 
-ALLOWED_HOSTS = ['https://sodiq-portfolio-backend-v2.onrender.com']
+ALLOWED_HOSTS = [
+    'https://sodiq-portfolio-backend-v2.onrender.com',
+    '.onrender.com',
+    'localhost',
+    '127.0.0.1',
+]
 
 
 # Application definition
