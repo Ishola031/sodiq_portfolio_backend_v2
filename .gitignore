@@ -15,7 +15,7 @@ env/
 # Environment Variables
 # ======================
 .env
-
+note.txt
 
 
 # Static and Media (generated files)
