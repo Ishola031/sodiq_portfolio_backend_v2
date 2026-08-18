@@ -1,17 +1,3 @@
-# #!/usr/bin/env bash
-# # Exit on error
-# set -o errexit
-
-# # Collect static files
-# python manage.py collectstatic --noinput
-
-# # Run database migrations (This automatically triggers the code above!)
-# python manage.py migrate
-
-# # Start both web and worker using Honcho
-# honcho start
-
-
 #!/usr/bin/env bash
 # Exit on error
 set -o errexit
@@ -22,8 +8,16 @@ pip install -r requirements.txt
 # Collect static files
 python manage.py collectstatic --noinput
 
-# Run database migrations
+# Run migrations
 python manage.py migrate
 
-# Create superuser automatically if it doesn't exist
-python manage.py setup_admin
+# Create superuser safely
+python manage.py shell -c "
+from django.contrib.auth import get_user_model;
+User = get_user_model();
+if not User.objects.filter(username='sodiqadmin').exists():
+    User.objects.create_superuser('sodiqadmin', 'sannisodiq031@gmail.com', 'Ishola@031');
+    print('✔ Superuser created');
+else:
+    print('⚠️ Superuser already exists');
+"
