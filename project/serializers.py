@@ -5,7 +5,7 @@ class ProgramSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Program
-        fields = ('id', 'name','icon')
+        fields = ('id', 'name','icon', 'skill')
 
 
 class ProjectSerializer(serializers.ModelSerializer):
@@ -20,3 +20,5 @@ class ServiceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Service
         fields = ('id', 'name','icon', 'slug', 'description', 'created_at')
+
+

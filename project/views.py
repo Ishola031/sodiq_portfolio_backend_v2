@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .models import Project, Service
-from .serializers import ProjectSerializer, ServiceSerializer
+from .models import Project, Service, Program
+from .serializers import ProjectSerializer, ServiceSerializer, ProgramSerializer
 from .paginations import ProjectPagination
 from django.views.decorators.cache import cache_page
 from project.tasks import send_contact_email
@@ -58,3 +58,11 @@ def send_email(request):
 
     send_contact_email.delay(number, firstName,lastName,user_email, message)
     return Response({"message": "Email sent successfully"})
+
+@cache_page(60 * 5)
+@api_view(['GET'])
+def programAPi(request):
+    programs = Program.objects.all().order_by('-created_at')
+    serializer = ProgramSerializer(programs, many=True)
+    return Response(serializer.data, status=200)
+

@@ -18,6 +18,7 @@ class Program(models.Model):
     name = models.CharField(max_length=50)
     slug = models.SlugField(unique=True)
     icon = models.CharField(max_length=50)
+    skill = models.PositiveBigIntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -37,12 +38,6 @@ class Project(models.Model):
     def __str__(self):
         return self.name
     
-    
-# class ProjectProgram(models.Model):
-#     project = models.ForeignKey(Project, on_delete=models.CASCADE)
-#     program = models.ForeignKey(Program, on_delete=models.CASCADE)
-
-
     
 # class Testimonial(models.Model):
 #     name = models.CharField(max_length=50)
